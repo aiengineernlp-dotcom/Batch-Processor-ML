@@ -19,14 +19,13 @@ random.seed(42)
 
 
 def create_dataset(n_samples: int) -> list[
-    dict]:  # cette fonction retourne une liste de dictionnaires avec un id,les features et le label (0/1)
+    dict]:
     '''Generate a synthetic classification dataset'''
     return [
         {
             "id": i,
             "features": [round(random.gauss(0, 1), 4) for _ in range(5)],  #
             "label": random.choice([0, 1])
-            # je crois que vu que c'est la classification (oui ou non), on doit avoir cette cette ligne mais qui doit etre aleatoire
         }
         for i in range(n_samples)
     ]
@@ -53,11 +52,13 @@ def create_batches(dataset: list, batch_size: int) -> list[list]:
     return [
         dataset[i:i + batch_size]
         for i in range(0, len(dataset), batch_size)
-    ]  # avant le for je ne comprend pas
+    ]
 
 
 def simulate_forward_pass(batch: list) -> float:
-    pass
+    labels = [sample["label"] for sample in batch]
+    loss = sum(labels)/len(labels)
+    return round(loss+random.uniform(-0.1,0.1),4)
 
 
 
