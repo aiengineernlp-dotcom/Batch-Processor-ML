@@ -25,5 +25,10 @@ def create_shuffled_dataset(dataset:list)->list:
 
 
 def create_batches(dataset:list, batch_size:int)->list:
-    pass
+    return [
+        dataset[i:i+ batch_size] for i in range(0,len(dataset), batch_size)
+    ]
+
+
+
 
