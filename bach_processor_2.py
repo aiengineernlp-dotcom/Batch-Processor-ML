@@ -36,8 +36,17 @@ def simulate_forward_pass(batch:list)->float:
     return round(loss+ random.uniform(-0.1,0.1),4)
 
 
-def train_epoch(dataset:list, batch_size:int):
+def train_epoch(dataset:list, batch_size:int,epochs:int)->dict:
+
+    shuffled = create_shuffled_dataset(dataset)
+    batches = create_batches(dataset,batch_size)
+    loss = []
+
+    print(f"\n EPOCHS: {epochs}")
+    print(f"\n    {'Batch':>6} | {'Size':>8} | {'Loss':>8} | Progress")
+    print("=" * 140)
     pass
+
 
 
 
